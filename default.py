@@ -203,6 +203,8 @@ class Main:
                     self.WINDOW.setProperty("%s.%d.VideoAspect"     % (request, count), streaminfo['videoaspect'])
                     self.WINDOW.setProperty("%s.%d.AudioCodec"      % (request, count), streaminfo['audiocodec'])
                     self.WINDOW.setProperty("%s.%d.AudioChannels"   % (request, count), str(streaminfo['audiochannels']))
+            if request == 'RecommendedMovie':
+                self.WINDOW.setProperty("%s.Count" % (request), str(json_query['result']['limits']['total']))
             del json_query
 
     def _fetch_tvshows_recommended(self, request):
@@ -268,6 +270,7 @@ class Main:
                     self.WINDOW.setProperty("%s.%d.VideoAspect"         % (request, count), streaminfo['videoaspect'])
                     self.WINDOW.setProperty("%s.%d.AudioCodec"          % (request, count), streaminfo['audiocodec'])
                     self.WINDOW.setProperty("%s.%d.AudioChannels"       % (request, count), str(streaminfo['audiochannels']))
+            self.WINDOW.setProperty("%s.Count" % (request), str(json_query['result']['limits']['total']))
             del json_query
 
     def _fetch_tvshows(self, request):
